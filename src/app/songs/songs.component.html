@@ -1,0 +1,50 @@
+
+<div class="rate_it">
+  <img src="../../assets/images/image2.png" height="87" width="243"/>
+</div>
+
+  <div class="container">
+    <div class="header rating-line">
+      <div class="button-rate">
+        <button (click)="randomSongsRateStart()" *ngIf="switchRandomRatingFlag"> Random Rating</button>
+            <button (click)="randomSongsRateStop()" *ngIf="!switchRandomRatingFlag">Stop Random Rating</button>
+      </div>
+    </div>
+    <div *ngFor="let song of songs" class="row" style="box-shadow: 11px 0 {{song.color}}"  >
+      <div style="padding: 0" class="singer col-md-3">
+        <img src="{{song.coverUrl}}">
+      </div>
+      <div class="col-md-8">
+        <div [ngStyle]="{ color: song.color }" class="name col-md-12" >{{song.name}}</div>
+        <div class="single col-md-12"> {{song.single}}</div>
+        <div class="rate">
+          <span class="rating"> Rate me:</span>
+            <ngb-rating  [ngStyle]="{ color: song.color }" [(rate)]="song.rating" (rateChange)="updateRating(song, song.rating)" ></ngb-rating>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+<!--  <div class="container" style="">-->
+<!--    <div class="row">-->
+<!--      <div *ngFor="let song of songs" class="col-md-12 col-sm-12 col-12">-->
+<!--        <div class="singer">-->
+<!--          <img src="{{song.coverUrl}}">-->
+
+<!--<div class="col-md-8"></div>-->
+<!--          <div [ngStyle]="{ color: song.color }" class="name col-md-12" >{{song.name}}</div>-->
+<!--          <div class="single col-md-12"> {{song.single}}</div>-->
+<!--          <div class="rate">-->
+<!--            <div class="rating"> Rate me:</div>-->
+<!--            <i class="bi bi-hand-thumbs-down" (click)="decreaseRatingByOne(song)"></i>-->
+<!--            <span style=""> {{song.rating}} </span>-->
+<!--            <i class="bi bi-hand-thumbs-up" (click)="increaseRatingByOne(song)"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
